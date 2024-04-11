@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <link rel="stylesheet" href="/src/signup.css">
+  <script src="https://kit.fontawesome.com/859dd79601.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="form-box">
+      <h1 id="title">Sign Up</h1> 
+      <form action="">
+        <div class="input-group">
+          <div class="input-field" id="Namefield">
+            <i class="fa-solid fa-user"></i>
+            <input type="text"  autocomplete="off" placeholder=" Enter your Name">
+          </div>
+          <div class="input-field">
+            <i class="fa-solid fa-envelope"></i>         
+            <input type="email" autocomplete="off"  placeholder=" Enter your Email or username">
+          </div>
+          <div class="input-field">
+            <i class="fa-solid fa-lock"></i>  
+            <input type="password" autocomplete="off"  placeholder=" Enter your password">
+          </div>
+          <div class="input-field">
+            <i class="fa-solid fa-phone"></i>
+            <input type="tel" id="phoneField" placeholder="phone no">
+          </div>
+          <p id="Forgot"> <a href="#">Forgot password</a></p>
+          <!-- <div class="input-field otp-field hidden">  <i class="fa-solid fa-hashtag"></i>  
+            <input type="number"  autocomplete="off"  placeholder=" Enter OTP">
+          </div> -->
+        </div>
+        <div class="btn-field">
+          <button type="button" id="signupbtn">Sign up</button>
+          <!-- <button type="button" id="home-btn" class="disable" style="margin-left:125px;;font-weight: 700;font-size:1.5em;"><a style="text-decoration: none;"  href="index.html" class="home-btn">Home</a>  </div>
+          </div></button> -->
+      
+        
+      </form>
+      
+    </div>
+  </div>
+  <script>
+    let signupButton = document.getElementById("signupbtn");
+    let signinButton = document.getElementById("signinbtn");
+    let Namefield = document.getElementById("Namefield");
+    let title = document.getElementById("title");
+    let home_btn = document.getElementById("home-btn");
+    let otpField = document.querySelector(".otp-field");  // Select using querySelector
+
+    signinButton.onclick = function() {
+      Namefield.style.maxHeight="0";
+      title.innerHTML = "Sign In";
+      otpField.classList.add("hidden");
+      signupButton.classList.add("disable");
+      signinButton.classList.remove("disable");
+     
+    }
+    
+    signupButton.onclick = function() {
+      Namefield.style.maxHeight="60px";
+      title.innerHTML = "Sign Up";
+      otpField.classList.remove("hidden");
+      signupButton.classList.remove("disable");
+      signinButton.classList.add("disable");
+    
+    }
+    let phoneField = document.getElementById("phoneField");
+
+phoneField.addEventListener("input", function() {
+
+  let phoneRegex = /^\d{10}$/;
+  
+  if (!phoneRegex.test(phoneField.value)) {
+    phoneField.value = phoneField.value.slice(0, 10); 
+  }
+});
+async function fetchData(url, method, headers, bodyContent) {
+    try {
+        let response = await fetch(url, { 
+            method: method,
+            body: bodyContent,
+            headers: headers
+        });
+        
+        let data = await response.text();
+        console.log(data);
+        // You can return data if needed
+        return data;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        // You can handle the error as needed
+        return null;
+    }
+}
+
+// Example usage:
+let headersList = {
+    "Accept": "*/*",
+    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+    "Content-Type": "application/json"
+};
+
+let bodyContent = JSON.stringify({
+    "name": "purvesh",
+    "email": "aabc@gmail.com",
+    "password": "12345678",
+    "phonenumber": "9999999999"
+});
+
+fetchData("http://localhost:5000/api/auth/createuser", "POST", headersList, bodyContent);
+
+  </script>
+</body>
+
+</html>

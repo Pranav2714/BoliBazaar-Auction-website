@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(
+      rgba(255, 200, 87, 0.8),
+      rgba(255, 200, 87, 0.8)
+    ),
+    url(459-background.png);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+.form-box {
+  width: 90%;
+  max-width: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 50px 60px 70px;
+  text-align: center;
+  border-radius: 4%;
+}
+.form-box h1 {
+  font-size: 30px;
+  margin-bottom: 60px;
+  color: #10100f;
+  position: relative;
+}
+.form-box h1::after {
+  content: "";
+  width: 30px;
+  height: 4px;
+  border-radius: 3px;
+  background-color: #ffc857;
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translate(-50%);
+}
+.input-field {
+  background: #eaeaea;
+  margin: 15px 0;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  max-height: 65px;
+  transition: max-height 0.5s;
+  overflow: hidden;
+  transition: max-height 0.5s;
+}
+input {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  padding: 18px 15px;
+  font-size: large;
+}
+.input-field i {
+  margin-left: 15px;
+  color: #999;
+  font-size: x-large;
+}
+
+form p {
+  text-align: center;
+  font-size: 13px;
+}
+form p a {
+  text-decoration: none;
+  color: #ffc857;
+}
+.btn-field {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.btn-field button {
+  flex-basis: 48%;
+  background: #ffc857;
+  color: #fff;
+  height: 40px;
+  border-radius: 20px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  transition: background 1s;
+  margin-top: 15px;
+}
+.input-group {
+  height: 300px;
+}
+.btn-field button.disable {
+  background: #eaeaea;
+  color: #555;
+}
+.hidden {
+  max-height: 0;
+}
+.input-group {
+  height: 365px; /* Increase height to fit OTP field */
+}
+#Forgot {
+  font-size: 18px;
+  font-weight: 500;
+}
+.home-btn {
+  background-color: #ffc857;
+  color: white;
+  border-radius: 1em;
+  font-size: 1.5em;
+
+  padding: 10px 20px;
+  border: none; /* Optional: remove default button border */
+}
