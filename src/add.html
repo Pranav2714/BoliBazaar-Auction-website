@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BoliBazaar</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://gistcdn.githack.com/mfd/09b70eb47474836f25a21660282ce0fd/raw/e06a670afcb2b861ed2ac4a1ef752d062ef6b46b/Gilroy.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  </head>
+  <body>
+    <div id="nav">
+      <div id="logo">
+        <img src="/resources/logo4.png" alt="" />
+      </div>
+      <div id="nav-el">
+        <a href="#" class="nav-tabs">AUCTIONS+</a>
+        <a href="#" class="nav-tabs">BUY</a>
+        <a href="#" class="nav-tabs">SELL</a>
+        <a href="#" class="nav-tabs">DEPARTMENTS</a>
+        <a href="#" class="nav-tabs">REACH US</a>
+      </div>
+      <div id="nav-btns">
+        <button id="log-reg">
+          <a href="login.html" target="_blank">Login/Register</a>
+        </button>
+        <i class="ri-search-line"></i>
+      </div>
+    </div>
+    
+
+<p class="p-10 m-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dicta molestias accusamus sit ullam cum magnam expedita excepturi fugiat in a quidem hic quibusdam animi, tempora error? Eaque dicta sequi expedita ratione officiis praesentium, dignissimos veritatis, odit, aperiam dolor eum numquam mollitia? Nam enim sequi accusamus totam saepe exercitationem laborum.</p>
+<h1 id="title" class="text-center mt-10">Add New Auction Item</h1>
+    <div class="container mt-10">
+      <h2>Add New Auction Item</h2>
+      <form action="/api/auctionItems" method="POST">
+          <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" id="title" name="title" required>
+          </div>
+          <div class="form-group">
+              <label for="description">Description</label>
+              <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+              <label for="seller">Seller ID</label>
+              <input type="text" class="form-control" id="seller" name="seller" required>
+          </div>
+          <div class="form-group">
+              <label for="startingBidAmount">Starting Bid Amount</label>
+              <input type="number" class="form-control" id="startingBidAmount" name="startingBid[amount]" required>
+          </div>
+          <div class="form-group">
+              <label for="startingBidCurrency">Starting Bid Currency</label>
+              <input type="text" class="form-control" id="startingBidCurrency" name="startingBid[currency]" required>
+          </div>
+          <div class="form-group">
+              <label for="endTime">End Time</label>
+              <input type="datetime-local" class="form-control" id="endTime" name="endTime" required>
+          </div>
+          <div class="form-group">
+              <label for="category">Category</label>
+              <input type="text" class="form-control" id="category" name="category" required>
+          </div>
+          <div class="form-group">
+              <label for="condition">Condition</label>
+              <input type="text" class="form-control" id="condition" name="condition" required>
+          </div>
+          <div class="form-group">
+              <label for="images">Images</label>
+              <input type="file" class="form-control-file" id="images" name="images" multiple required>
+          </div>
+          <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" class="form-control" id="city" name="location[city]" required>
+          </div>
+          <div class="form-group">
+              <label for="country">Country</label>
+              <input type="text" class="form-control" id="country" name="location[country]" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+  </div>
+
+
+
+<footer>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/" target="_blank"
+            ><i class="ri-facebook-circle-line"></i
+          ></a>
+          <a href="https://twitter.com/?lang=en" target="_blank"
+            ><i class="ri-twitter-x-fill"></i
+          ></a>
+          <a href="https://www.instagram.com/" target="_blank"
+            ><i class="ri-instagram-line"></i
+          ></a>
+        </div>
+        <br />
+        <div>&copy;BoliBazaar 2024 . All Rights Reserved</div>
+      </footer>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"
+      integrity="sha512-EZI2cBcGPnmR89wTgVnN3602Yyi7muWo8y1B3a8WmIv1J9tYG+udH4LvmYjLiGp37yHB7FfaPBo8ly178m9g4Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"
+      integrity="sha512-OzC82YiH3UmMMs6Ydd9f2i7mS+UFL5f977iIoJ6oy07AJT+ePds9QOEtqXztSH29Nzua59fYS36knmMcv79GOg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="script.js"></script>
+    <script>
+      let form = document.querySelector("form");
+
+      form.addEventListener("submit", (event) => {
+        
+        event.preventDefault();
+
+        let title = document.querySelector("#title").value;
+        let description = document.querySelector("#description").value;
+        let seller = document.querySelector("#seller").value;
+        let startingBidAmount = document.querySelector("#startingBidAmount").value;
+        let startingBidCurrency = document.querySelector("#startingBidCurrency").value;
+        let endTime = document.querySelector("#endTime").value;
+        let category = document.querySelector("#category").value;
+        let condition = document.querySelector("#condition").value;
+        let images = document.querySelector("#images").files;
+
+        let city = document.querySelector("#city").value;
+        let country = document.querySelector("#country").value;
+
+        
+        let reqbody = {
+          title,
+          description,
+          seller,
+          startingBidAmount,
+          startingBidCurrency,
+          endTime,
+          category,
+          condition,
+          images,
+          location: {
+            
+            city,
+            country
+
+          },
+          
+        }
+
+
+
+        fetch("http://localhost:3000/api/auctionitems", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(reqbody),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+
+      }
+    
+    )
+    </script>
+  </body>
+</html>
