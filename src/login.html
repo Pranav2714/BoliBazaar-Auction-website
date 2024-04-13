@@ -27,7 +27,7 @@
           <input type="email" name="email" placeholder="E-mail" />
           <label class="label" for="pass"> Password </label>
           <input type="password" name="password" placeholder="Password" />
-
+          <p id="status"></p>
           <button class="btn">Login</button>
           <div class="forgot-signin">
             <a href="signup.html">New Account? Sign Up</a>
@@ -35,5 +35,53 @@
         </form>
       </div>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const loginForm = document.getElementById("signup");
+
+        loginForm.addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission
+
+          // Extract email and password from the form
+          const email = loginForm.elements.email.value;
+          const password = loginForm.elements.password.value;
+
+          // Construct the data object for the POST request
+          const data = {
+            email: email,
+            password: password,
+          };
+
+          // Make a POST request
+          fetch("http://localhost:5000/api/auth/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+              return response.json();
+            })
+            .then((data) => {
+              // Handle the response data as needed
+              console.log("Login successful:", data);
+              window.location.href = "auctions.html";
+              // Redirect or perform other actions after successful login
+            })
+            .catch((error) => {
+              console.error(
+                "There was a problem with the login request:",
+                error
+              );
+              document.getElementById("status").innerHTML = "Login Failed";
+              // Handle errors, such as displaying error messages to the user
+            });
+        });
+      });
+    </script>
   </body>
 </html>

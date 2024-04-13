@@ -30,10 +30,11 @@ router.post(
     try {
       // Check whether the user with this email exists already
       let user = await User.findOne({ email: req.body.email });
-      if (user) {
+      let phonenumber = await User.findOne({ phonenumber: req.body.phonenumber });
+      if (user || phonenumber) {
         return res
           .status(400)
-          .json({ error: "Sorry a user with this email already exists" });
+          .json({ error: "Sorry a user with this email or phonenumber already exists" });
       }
       const salt = await bcrypt.genSalt(10);
       const secPass = await bcrypt.hash(req.body.password, salt);
