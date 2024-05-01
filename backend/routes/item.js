@@ -1,7 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const AuctionItem = require('../models/AuctionItem');
+const AuctionItem = require('../models/Item');
 const { body, validationResult } = require('express-validator');
+const fetchuser = require('../middleware/fetchuser');
+const multer = require('multer');
+const path = require('path');
+
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.join(__dirname, '../../', 'uploads')); // Upload files to 'uploads' directory
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + '-' + file.originalname); // Rename file with current timestamp
+    }
+  });
+  
+  const upload = multer({ storage: storage });
+
+  
 
 // ROUTE 1: Get All Auction Items: GET "/api/auctionItems"
 router.get('/', async (req, res) => {
@@ -15,13 +32,11 @@ router.get('/', async (req, res) => {
 });
 
 // ROUTE 2: Add a new Auction Item: POST "/api/auctionItems"
-router.post('/', [
+router.post('/', fetchuser, [
     body('title', 'Title is required').notEmpty(),
     body('description', 'Description is required').notEmpty(),
-    body('seller', 'Seller ID is required').notEmpty(),
     body('startingBid.amount', 'Starting bid amount is required').notEmpty().isNumeric(),
     body('startingBid.currency', 'Starting bid currency is required').notEmpty(),
-    body('endTime', 'End time is required').notEmpty().isISO8601(),
     body('category', 'Category is required').notEmpty(),
     body('condition', 'Condition is required').notEmpty(),
     body('images', 'Images array is required').isArray({ min: 1 }),
@@ -33,14 +48,15 @@ router.post('/', [
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-
-        const { title, description, seller, startingBid, endTime, category, condition, images, location } = req.body;
+        console.log(req.user);
+        const { title, description, startingBid, endTime, category, condition, images, location } = req.body;
 
         const auctionItem = new AuctionItem({
             title,
             description,
-            seller,
+            seller: req.user.id,
             startingBid,
+            currentBid: startingBid,
             endTime,
             category,
             condition,
@@ -59,7 +75,8 @@ router.post('/', [
 // ROUTE 3: Update an existing Auction Item: PUT "/api/auctionItems/:id"
 router.put('/:id', async (req, res) => {
     try {
-        const { title, description, startingBid, currentBid, endTime, category, condition, images, location, finalBuyer, currentBuyer, dealClosed } = req.body;
+        const { title, description, startingBid, endTime,currentBid, category, condition, images, location, finalBuyer, currentBuyer, dealClosed } = req.body;
+        console.log(req.params.id);
         const updatedAuctionItem = await AuctionItem.findByIdAndUpdate(req.params.id, {
             $set: {
                 title,

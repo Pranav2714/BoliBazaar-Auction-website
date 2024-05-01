@@ -22,7 +22,8 @@ const AuctionItemSchema = new Schema({
         },
         currency: {
             type: String,
-            required: true
+            required: true,
+            default: "INR"
         }
     },
     currentBid: {
@@ -32,12 +33,13 @@ const AuctionItemSchema = new Schema({
         },
         currency: {
             type: String,
-            required: true
+            required: false,
+            default: "INR"
         }
     },
     endTime: {
         type: Date,
-        required: true
+        required: false
     },
     category: {
         type: String,
@@ -48,7 +50,7 @@ const AuctionItemSchema = new Schema({
         required: true
     },
     images: [{
-        type: String,
+        type: Buffer,
         required: true
     }],
     location: {

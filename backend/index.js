@@ -12,6 +12,7 @@ app.use(express.json());
 // Available Routes
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/notes", require("./routes/notes"));
+app.use("/api/auctionitems", require("./routes/item"));
 
 app.listen(port, () => {
   console.log(`BoliBazaar backend listening at http://localhost:${port}`);

@@ -1,51 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BoliBazaar</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://gistcdn.githack.com/mfd/09b70eb47474836f25a21660282ce0fd/raw/e06a670afcb2b861ed2ac4a1ef752d062ef6b46b/Gilroy.css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>BoliBazaar</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <!-- Bootstrap Icons-->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    rel="stylesheet"
+  />
+  <!-- Google fonts-->
 
-  </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- SimpleLightbox plugin CSS-->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
+    rel="stylesheet"
+  />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="css/styles.css" rel="stylesheet" />
+</head>
   <body>
-    <div id="nav">
-      <div id="logo">
-        <img src="/resources/logo4.png" alt="" />
-      </div>
-      <div id="nav-el">
-        <a href="#" class="nav-tabs">AUCTIONS+</a>
-        <a href="#" class="nav-tabs">BUY</a>
-        <a href="#" class="nav-tabs">SELL</a>
-        <a href="#" class="nav-tabs">DEPARTMENTS</a>
-        <a href="#" class="nav-tabs">REACH US</a>
-      </div>
-      <div id="nav-btns">
-        <button id="log-reg">
-          <a href="login.html" target="_blank">Login/Register</a>
-        </button>
-        <i class="ri-search-line"></i>
-      </div>
-    </div>
-    
-
-<p class="p-10 m-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet dicta molestias accusamus sit ullam cum magnam expedita excepturi fugiat in a quidem hic quibusdam animi, tempora error? Eaque dicta sequi expedita ratione officiis praesentium, dignissimos veritatis, odit, aperiam dolor eum numquam mollitia? Nam enim sequi accusamus totam saepe exercitationem laborum.</p>
-<h1 id="title" class="text-center mt-10">Add New Auction Item</h1>
-    <div class="container mt-10">
+   <!-- Navigation-->
+<nav
+class="navbar navbar-expand-lg navbar-light fixed-top py-3 bg-dark"
+id="mainNav"
+>
+<div class="container px-4 px-lg-5">
+  <a class="navbar-brand" href="index.html">BoliBazaar</a>
+  <button
+    class="navbar-toggler navbar-toggler-right"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarResponsive"
+    aria-controls="navbarResponsive"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ms-auto my-2 my-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="auctions.html">Auctions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="add.html">Sell</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="login.html">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="signup.html">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="profile.html">Profile</a>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+    <div class="container-md  mt-10 card py-5 " style="background-color: bisque;">
       <h2>Add New Auction Item</h2>
-      <form action="/api/auctionItems" method="POST">
+      <form>
           <div class="form-group">
               <label for="title">Title</label>
               <input type="text" class="form-control" id="title" name="title" required>
@@ -55,20 +84,12 @@
               <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
           </div>
           <div class="form-group">
-              <label for="seller">Seller ID</label>
-              <input type="text" class="form-control" id="seller" name="seller" required>
-          </div>
-          <div class="form-group">
               <label for="startingBidAmount">Starting Bid Amount</label>
               <input type="number" class="form-control" id="startingBidAmount" name="startingBid[amount]" required>
           </div>
           <div class="form-group">
               <label for="startingBidCurrency">Starting Bid Currency</label>
               <input type="text" class="form-control" id="startingBidCurrency" name="startingBid[currency]" required>
-          </div>
-          <div class="form-group">
-              <label for="endTime">End Time</label>
-              <input type="datetime-local" class="form-control" id="endTime" name="endTime" required>
           </div>
           <div class="form-group">
               <label for="category">Category</label>
@@ -92,26 +113,12 @@
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-  </div>
-
-
-
-<footer>
-        <div class="footer-social">
-          <a href="https://www.facebook.com/" target="_blank"
-            ><i class="ri-facebook-circle-line"></i
-          ></a>
-          <a href="https://twitter.com/?lang=en" target="_blank"
-            ><i class="ri-twitter-x-fill"></i
-          ></a>
-          <a href="https://www.instagram.com/" target="_blank"
-            ><i class="ri-instagram-line"></i
-          ></a>
+      <div class="alert alert-primary" role="alert" id="alert">
+      </div>
         </div>
-        <br />
-        <div>&copy;BoliBazaar 2024 . All Rights Reserved</div>
-      </footer>
-    </div>
+
+
+</div>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"
       integrity="sha512-EZI2cBcGPnmR89wTgVnN3602Yyi7muWo8y1B3a8WmIv1J9tYG+udH4LvmYjLiGp37yHB7FfaPBo8ly178m9g4Q=="
@@ -127,64 +134,76 @@
     <script src="script.js"></script>
     <script>
       let form = document.querySelector("form");
-
-      form.addEventListener("submit", (event) => {
-        
+      let alert = document.querySelector("#alert");
+    
+      form.addEventListener("submit", async (event) => {
         event.preventDefault();
-
+    
         let title = document.querySelector("#title").value;
         let description = document.querySelector("#description").value;
-        let seller = document.querySelector("#seller").value;
         let startingBidAmount = document.querySelector("#startingBidAmount").value;
         let startingBidCurrency = document.querySelector("#startingBidCurrency").value;
-        let endTime = document.querySelector("#endTime").value;
         let category = document.querySelector("#category").value;
         let condition = document.querySelector("#condition").value;
-        let images = document.querySelector("#images").files;
-
+        let images = document.querySelector("#images").files[0];
         let city = document.querySelector("#city").value;
-        let country = document.querySelector("#country").value;
+        let country = document.querySelector("#country").value;    
 
-        
-        let reqbody = {
-          title,
-          description,
-          seller,
-          startingBidAmount,
-          startingBidCurrency,
-          endTime,
-          category,
-          condition,
-          images,
-          location: {
-            
-            city,
-            country
+        try {
 
-          },
           
+
+
+          let headersList = {
+ "auth-token": localStorage.getItem("authtoken"),
+ "Content-Type": "application/json"
+}
+
+let bodyContent = JSON.stringify({
+  "title": title,
+  "description": description,
+  "startingBid":{
+    "amount":startingBidAmount,
+    "currency":startingBidCurrency
+  } ,
+  "category": category,
+  "condition": condition,
+  "images": ["images.jpg"],
+  "location":{"city": city,
+  "country": country}
+}
+);
+
+let response = await fetch("http://localhost:5000/api/auctionItems", { 
+  method: "POST",
+  body: bodyContent,
+  headers: headersList
+});
+
+let data = await response.json();
+console.log(data);
+
+
+
+          if (response.ok) {
+            let data = await response.json();
+            console.log("Auction item saved:", data);
+            alert.textContent = "Auction item saved successfully.";
+            alert.classList.remove("alert-danger");
+            alert.classList.add("alert-success");
+          } else {
+            alert.textContent = "Failed to save auction item.";
+            alert.classList.remove("alert-success");
+            alert.classList.add("alert-danger");
+          }
+        } catch (error) {
+          console.error("Error saving auction item:", error);
+          alert.textContent = "Internal Server Error. Please try again later.";
+          alert.classList.remove("alert-success");
+          alert.classList.add("alert-danger");
         }
-
-
-
-        fetch("http://localhost:3000/api/auctionitems", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(reqbody),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log("Success:", data);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-
-      }
-    
-    )
+      });
     </script>
+    
   </body>
 </html>
